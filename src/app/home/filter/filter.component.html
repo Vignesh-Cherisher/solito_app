@@ -1,0 +1,18 @@
+<div class="flex bg-white text-black py-2 px-4">
+  <div class="flex items-center border-[1px] border-[rgba(0,0,0,0.4)] px-2 py-1 text-sm cursor-pointer mr-3 rounded-sm bg-blue-50 hover:brightness-105" (click)="openFilterDialog()">
+    <i class="fa-solid fa-filter"></i>
+    <p class="filter-text">Filter</p>
+  </div>
+  <p class="rating-filter filter-container"
+    [ngClass]= "{ 'active-filter': isFilteredOnRating }"
+    (click)="applyRatingFilter()">
+    Rating 4.0+
+    <i class="fa-solid fa-xmark" *ngIf="isFilteredOnRating"></i>
+  </p>
+  <p class="vegetarian-filter filter-container"
+    [ngClass]= "{ 'active-filter': isFilteredOnVeg }"
+    (click)="applyVegFilter()">
+    Pure Veg
+    <i class="fa-solid fa-xmark" *ngIf="isFilteredOnVeg"></i>
+  </p>
+</div>

@@ -1,0 +1,34 @@
+<div class="w-full h-20 bg-black flex justify-between items-center text-white p-2.5">
+  <div class="flex items-center">
+    <img src="../../assets/images/Logo.png" alt="Logo" class="rounded-full max-w-16 m-2">
+    <h1 class="text-3xl font-protestGuerilla">Solito</h1>
+  </div>
+  <div class="w-1/2 h-3/5 flex bg-blue-50 rounded-full text-blue-900 [box-shadow:rgba(255,_255,_255,_0.4)_2px_2px]">
+    <div class="w-40 flex justify-around">
+      <i class="fa-solid fa-location-crosshairs my-auto ml-2"></i>
+      <select name="city-select" id="city-select-dropdown" class="border-0 outline-none bg-blue-50 text-orange-400 text-sm my-auto" #citySelection (change) = onSelected(citySelection.value)>
+        <option value="Chennai" default>Chennai</option>
+        <option value="Coimbatore">Coimbatore</option>
+      </select>
+    </div>
+    <p class="text-4xl text-center w-4 mr-1 relative bottom-1">|</p>
+    <i class="fa-solid fa-magnifying-glass my-auto mr-1.5"></i>
+    <div class="w-full my-auto">
+      <input type="text" [placeholder]="searchPlaceHolder" class="w-full border-0 outline-none bg-transparent text-sm" #searchBar>
+    </div>
+  </div>
+  <div class="flex">
+    <div class="cart-container md:text-lg lg:text-xl text-center mr-3 cursor-pointer hover:text-yellow-300">
+      <i class="fa-solid fa-bag-shopping"></i>
+      <p *ngIf="iconDescStatus" class="cart-text text-sm">Cart</p>
+    </div>
+    <div class="order-container md:text-lg lg:text-xl text-center mr-3 cursor-pointer hover:text-yellow-300">
+      <i class="fa-solid fa-clock"></i>
+      <p *ngIf="iconDescStatus" class="order-text text-sm">Orders</p>
+    </div>
+    <div class="logout-container md:text-lg lg:text-xl text-center mr-3 cursor-pointer hover:text-yellow-300">
+      <i class="fa-solid fa-right-from-bracket"></i>
+      <p *ngIf="iconDescStatus" class="logout-text text-sm">Logout</p>
+    </div>
+  </div>
+</div>

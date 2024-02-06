@@ -1,0 +1,14 @@
+<div class="py-4 px-6 text-blue-900">
+  <h2 class="font-oswald mb-4 text-lg font-semibold">Explore Top Dishes</h2>
+  <div class="flex items-center gap-y-4 w-full">
+    <mat-icon class="cursor-pointer text-blue-900 bg-blue-300 text-center flex items-center h-6 min-w-6 rounded-full mr-2" (click) = "scrollOnClick('left')">
+      arrow_left
+    </mat-icon>
+    <div class="flex overflow-x-scroll mr-2" #dishContainer>
+      <app-dish-item *ngFor="let dish of topDishes" [dishItem]="dish"></app-dish-item>
+    </div>
+    <mat-icon class="cursor-pointer text-blue-900 bg-blue-300 text-center flex h-6 min-w-6 rounded-full"(click) = "scrollOnClick('right')">
+      arrow_right
+    </mat-icon>
+  </div>
+</div>
