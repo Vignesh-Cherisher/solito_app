@@ -1,1 +1,12 @@
-<p>restaurant-item works!</p>
+<div class="p-2 flex flex-col items-center cursor-pointer hover:restaurant-item-hover-effect" [ngClass]="{'hide-restaurant-item' : isContainerShrunk}">
+  <div class="rounded-lg mb-2 bg-cover w-52 h-60" *ngIf="isContainerShrunk" [ngStyle]="{background: 'url(' + restaurantItem.logoImagePath + ')', 'background-size': 'cover'}"></div>
+  <img [src]="restaurantItem.logoImagePath" [alt]="restaurantItem.Name" class="h-60 w-4/5 rounded-lg max-w-[325px] min-w-52 mb-2" #restaurantLogo *ngIf="!isContainerShrunk">
+  <div class="flex justify-between w-full md:w-4/5 max-w-[325px] mb-1">
+    <h2 class="restaurant-name">{{ restaurantItem.name }}</h2>
+    <div class="flex bg-blue-300 p-1 rounded-md text-sm h-fit items-center">
+      <p class="mr-1">{{ restaurantItem.rating }}</p>
+      <i class="fa-solid fa-star"></i>
+    </div>
+  </div>
+  <p class="w-full md:w-4/5 md:text-left md:*:text-sm">{{ restaurantItem.address }}</p>
+</div>

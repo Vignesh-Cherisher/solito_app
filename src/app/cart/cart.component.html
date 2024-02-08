@@ -1,0 +1,46 @@
+<div class="bg-blue-50 p-8">
+  <h1 class="font-oswald text-3xl mb-4">Shopping Cart</h1>
+  <div class="rounded-lg bg-white py-4 px-4 grid grid-cols-1 md:grid-cols-2">
+    <div *ngIf="cartDishItems.length !== 0 else emptyCart">
+      <div class="flex items-center cursor-pointer mb-4 text-gray-500">
+        <h2 class="text-xl mx-4">Hotel Name</h2>
+        <mat-icon class="mat-18">chevron_right</mat-icon>
+      </div>
+      <div class="ml-12 mb-8 flex w-full space-x-6" *ngFor="let cartItem of cartDishItems; let ind = index">
+        <img [src]="cartItem.imagePath" alt="{{ cartItem.dishName }}" class="w-24 rounded-full">
+
+        <div class="w-3/6 min-w-36">
+          <h2 class="text-lg font-semibold mt-2">{{ cartItem.dishName }}</h2>
+          <p class="text-sm font-light mb-3">₹ {{ cartItem.price }}</p>
+          <div class="flex space-x-1 items-center">
+            <div class="w-4 h-4 border-solid border-2 flex items-center justify-center" [ngClass]="{'border-red-500': !cartItem.veg, 'border-green-600': cartItem.veg}">
+              <div class="rounded-full w-2 h-2" [ngClass]="{'bg-red-500': !cartItem.veg, 'bg-green-600': cartItem.veg}"></div>
+            </div>
+            <div *ngIf="cartItem.veg else nonVeg" class="text-green-600 font-semibold">Veg</div>
+            <ng-template #nonVeg>
+              <div class="text-red-500 font-semibold">Non-Veg</div>
+            </ng-template>
+          </div>
+        </div>
+
+        <div class="">
+          <div class="flex mb-4 items-center">
+            <button class="w-5 bg-blue-800 text-sm text-white py-1.5 rounded-s-md filter hover:brightness-90" (click)="incrementDishQuantity(cartItem)">+</button>
+            <div class="px-3 text-center text-lg">{{ cartItem.quantity }}</div>
+            <button class="w-5 bg-blue-800 text-sm text-white py-1.5 rounded-e-md filter hover:brightness-90" (click)="decrementDishQuantity(cartItem, ind)">-</button>
+          </div>
+          <div class="font-light pl-3">
+            {{ cartItem.quantity * cartItem.price |  currency:'INR' }}
+          </div>
+        </div>
+      </div>
+      <div class="px-16">
+        <button class="bg-red-500 text-white p-2 rounded-md w-full hover:brightness-95" routerLink="/checkout">Checkout</button>
+      </div>
+    </div>
+
+    <ng-template #emptyCart>
+      <img src="../../assets/images/Empty-Cart.png" alt="Empty Cart">
+    </ng-template>
+  </div>
+</div>

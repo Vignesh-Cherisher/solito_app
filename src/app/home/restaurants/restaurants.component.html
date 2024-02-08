@@ -1,1 +1,6 @@
-<p>restaurants works!</p>
+<div class="py-4 px-8 text-blue-900">
+  <h2 class="font-oswald font-semibold text-lg">Explore Restaurants from {{ cityName }}</h2>
+</div>
+<div class="grid grid-cols-[repeat(3,32%)] gap-x-[1%] xl:grid-cols-4 grid-rows-[350px] auto-rows-[350px]">
+  <app-restaurant-item *ngFor="let restaurant of cityRestaurants" [restaurantItem] = "restaurant" (click)="openRestaurantDetails(restaurant)"></app-restaurant-item>
+</div>

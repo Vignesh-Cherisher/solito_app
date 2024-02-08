@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { topDishesService } from '../../services/topDishes.service';
+import { Dish } from './dish.model';
 
 @Component({
   selector: 'app-dishes',
@@ -8,7 +9,7 @@ import { topDishesService } from '../../services/topDishes.service';
   providers: [topDishesService]
 })
 export class DishesComponent {
-  topDishes: { imagePath: string, dishName: string }[]
+  topDishes: Dish[]
   scrollValue: number;
   @ViewChild('dishContainer') dishContainerElement:ElementRef
 

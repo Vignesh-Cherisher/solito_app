@@ -1,11 +1,14 @@
 export class Dish {
+  public dishId: number
   public dishName: string;
   public imagePath: string;
   public price: string;
   public rating: number;
-  public type: boolean;
+  public veg: boolean;
+  public description: string;
 
-  constructor(dishName: string, imagePath?: string, price?: string, rating?: number, type?: boolean) {
+  constructor(Id:number, dishName: string, imagePath?: string, price?: string, description?: string, veg?: boolean, rating?: number) {
+    this.dishId = Id;
     this.dishName = dishName;
     if (imagePath !== undefined) {
       this.imagePath = imagePath;
@@ -14,6 +17,7 @@ export class Dish {
     }
     this.price = price ? price : '₹';
     this.rating = rating ? rating : null;
-    this.type = type ? type : false;
+    this.veg = veg ? veg : false;
+    this.description = description ? description : '';
   }
 }

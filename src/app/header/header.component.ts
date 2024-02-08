@@ -11,6 +11,7 @@ export class HeaderComponent implements OnInit {
   searchPlaceHolder: string = "";
   iconDescStatus: boolean = true;
   cityName: string = "";
+  userLogin: boolean = false;
 
   @ViewChild('searchBar') searchBarElement: ElementRef;
 

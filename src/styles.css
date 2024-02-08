@@ -3,5 +3,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@layer components {
+  .active-filter {
+    @apply border-solid border-2 border-red-500 bg-red-500 pl-1
+  }
+
+  .filter-container {
+    @apply border-[1px] border-[rgba(0,0,0,0.4)]  bg-blue-50 
+  }
+
+  .restaurant-item-hover-effect {
+    @apply bg-white border-2 rounded-sm border-solid border-[rgba(0,0,0,0.337)]
+  }
+
+  .hide-restaurant-item {
+    @apply overflow-hidden hover:w-fit
+  }
+}

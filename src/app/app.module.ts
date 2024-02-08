@@ -18,6 +18,11 @@ import { DishItemComponent } from './home/dishes/dish-item/dish-item.component';
 import { FilterComponent } from './home/filter/filter.component';
 import { RestaurantsComponent } from './home/restaurants/restaurants.component';
 import { RestaurantItemComponent } from './home/restaurants/restaurant-item/restaurant-item.component';
+import { LoginComponent } from './login/login.component';
+import { CartComponent } from './cart/cart.component';
+import { OrdersComponent } from './orders/orders.component';
+import { PaymentComponent } from './payment/payment.component';
+import { RestaurantViewComponent } from './home/restaurant-view/restaurant-view.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +33,12 @@ import { RestaurantItemComponent } from './home/restaurants/restaurant-item/rest
     DishItemComponent,
     FilterComponent,
     RestaurantsComponent,
-    RestaurantItemComponent
+    RestaurantItemComponent,
+    LoginComponent,
+    CartComponent,
+    OrdersComponent,
+    PaymentComponent,
+    RestaurantViewComponent
   ],
   imports: [
     BrowserModule,
