@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatButtonModule} from '@angular/material/button';
+import {MatTabsModule} from '@angular/material/tabs';
 
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
@@ -19,10 +22,11 @@ import { FilterComponent } from './home/filter/filter.component';
 import { RestaurantsComponent } from './home/restaurants/restaurants.component';
 import { RestaurantItemComponent } from './home/restaurants/restaurant-item/restaurant-item.component';
 import { LoginComponent } from './login/login.component';
-import { CartComponent } from './cart/cart.component';
 import { OrdersComponent } from './orders/orders.component';
-import { PaymentComponent } from './payment/payment.component';
+import { PaymentComponent } from './checkout/payment/payment.component';
 import { RestaurantViewComponent } from './home/restaurant-view/restaurant-view.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { CartComponent } from './checkout/cart/cart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +42,8 @@ import { RestaurantViewComponent } from './home/restaurant-view/restaurant-view.
     CartComponent,
     OrdersComponent,
     PaymentComponent,
-    RestaurantViewComponent
+    RestaurantViewComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +52,10 @@ import { RestaurantViewComponent } from './home/restaurant-view/restaurant-view.
     ReactiveFormsModule,
     MatFormFieldModule,
     MatIconModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule,
+    MatStepperModule,
+    MatTabsModule
   ],
   providers: [
     provideAnimationsAsync()

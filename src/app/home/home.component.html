@@ -1,9 +1,16 @@
-<div>
-  <app-filter></app-filter>
-</div>
-<div class="w-full flex justify-center">
-  <app-dishes class="w-full lg:w-11/12"></app-dishes>
-</div>
-<div class="w-full flex justify-center">
-  <app-restaurants class="w-full lg:w-11/12"></app-restaurants>
+<div class="h-full">
+  <div *ngIf="!loginState" class="h-full">
+    <app-login></app-login>
+  </div>
+  <div *ngIf="loginState">
+    <div >
+      <app-filter></app-filter>
+    </div>
+    <div class="w-full flex justify-center">
+      <app-dishes class="w-full lg:w-11/12"></app-dishes>
+    </div>
+    <div class="w-full flex justify-center">
+      <app-restaurants class="w-full lg:w-11/12"></app-restaurants>
+    </div>
+  </div>
 </div>

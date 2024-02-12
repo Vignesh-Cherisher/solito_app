@@ -6,6 +6,10 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
 
 @layer components {
   .active-filter {
@@ -13,7 +17,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   }
 
   .filter-container {
-    @apply border-[1px] border-[rgba(0,0,0,0.4)]  bg-blue-50 
+    @apply border-[1px] border-[rgba(0,0,0,0.4)]  bg-blue-50
   }
 
   .restaurant-item-hover-effect {
@@ -22,5 +26,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
   .hide-restaurant-item {
     @apply overflow-hidden hover:w-fit
+  }
+
+  .form-error-status {
+    @apply text-red-500 border-b-red-500 border-b-2
   }
 }

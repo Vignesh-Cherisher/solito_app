@@ -1,5 +1,5 @@
 export class Dish {
-  public dishId: number
+  public dishId: number;
   public dishName: string;
   public imagePath: string;
   public price: string;
