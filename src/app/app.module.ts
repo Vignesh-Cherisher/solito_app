@@ -27,6 +27,10 @@ import { PaymentComponent } from './checkout/payment/payment.component';
 import { RestaurantViewComponent } from './home/restaurant-view/restaurant-view.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { CartComponent } from './checkout/cart/cart.component';
+import { UserDataService } from './services/userData.service';
+import { cartDishesService } from './services/cartDishes.service';
+import { crossCommunicationService } from './services/crossCommunication.service';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +50,7 @@ import { CartComponent } from './checkout/cart/cart.component';
     CheckoutComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -58,7 +63,10 @@ import { CartComponent } from './checkout/cart/cart.component';
     MatTabsModule
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    crossCommunicationService,
+    cartDishesService,
+    UserDataService
   ],
   bootstrap: [AppComponent]
 })

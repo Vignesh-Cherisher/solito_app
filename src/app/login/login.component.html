@@ -1,35 +1,67 @@
-<div class="bg-blue-50 w-full flex justify-center items-center h-full">
-  <div class="rounded-md bg-white w-1/2 max-w-[475px] min-w-80 card-shadow">
-    <mat-tab-group>
+<div class="bg-blue-50 w-full flex justify-center items-center h-[500px]">
+  <div class="rounded-md bg-white w-1/2 max-w-[475px] min-w-96 card-shadow">
+    <mat-tab-group (selectedTabChange)="resetFormGroup(loginForm, registerForm)">
       <mat-tab label="Login">
-        <div class="p-4">
-          <form class="flex flex-col items-center justify-center space-y-6" [formGroup]="loginForm">
+        <div class="p-8">
+          <form class="flex flex-col items-center justify-center space-y-6" [formGroup]="loginForm" (ngSubmit)="onLoginUser()">
             <div class="flex w-full items-center">
               <label for="user-email" class="font-semibold w-1/3 text-right">E-Mail: &nbsp;</label>
               <div>
-                <input type="text" id="user-email" placeholder="you@example.com" formControlName="email" class="bg-gray-50 p-2 border-b-2 focus:outline-none" [ngClass]="{ 'form-error-status' : loginForm.get('email').invalid && loginForm.get('email').touched}"/>
+                <input type="text" id="user-email" placeholder="you@example.com" formControlName="email" class="bg-gray-50 p-2 border-b-2 focus:outline-none" [ngClass]="{ 'form-error-status' : getLoginEmail().errors && getLoginEmail().touched}"/>
                 <div class="relative">
-                  <p class="text-red-500 text-xs absolute" *ngIf="loginForm.get('email').touched && loginForm.get('email').value === ''">The Email is required!</p>
-                  <p class="text-red-500 text-xs absolute" *ngIf="loginForm.get('email').touched && loginForm.get('email').invalid && loginForm.get('email').value !== ''">The Email is not Valid!</p>
+                  <p class="text-red-500 text-xs absolute" *ngIf="getLoginEmail().touched && getLoginEmail().value === ''">The Email is required!</p>
+                  <p class="text-red-500 text-xs absolute" *ngIf="getLoginEmail().touched && getLoginEmail().invalid && getLoginEmail().value !== ''">The Email is not Valid!</p>
                 </div>
               </div>
             </div>
             <div class="flex w-full items-center">
-              <label for="user-password" class="font-semibold w-1/3 text-right">Password: &nbsp;</label>
+              <div class="font-semibold w-1/3 text-right">
+                <label for="user-password" >Password: &nbsp;</label>
+                <div class="mb-3"></div>
+              </div>
               <div>
-                <input type="password" id="user-password" formControlName="password" class="bg-gray-50 p-2 border-b-2 focus:outline-none" [ngClass]="{ 'form-error-status' : loginForm.get('password').invalid && loginForm.get('password').touched}"/>
-                <div class="relative">
-                  <p class="text-red-500 text-xs absolute" *ngIf="loginForm.get('password').touched && loginForm.get('password').value === ''">The password is required!</p>
-                  <p class="text-red-500 text-xs absolute" *ngIf="loginForm.get('password').touched && loginForm.get('password').invalid">The password must contain atleast 8 characters!</p>
+                <input type="password" id="user-password" formControlName="password" class="bg-gray-50 p-2 border-b-2 focus:outline-none" [ngClass]="{ 'form-error-status' : getLoginPassword().errors && getLoginPassword().touched}"/>
+                <div class="relative  mb-3" *ngIf="getLoginPassword().errors">
+                  <p class="text-red-500 text-xs absolute" *ngIf="getLoginPassword().touched && getLoginPassword().value === ''">The password is required!</p>
+                  <p class="text-red-500 text-xs absolute" *ngIf="getLoginPassword().touched && getLoginPassword().errors.minlength && getLoginPassword().value !== ''">The password must contain atleast 8 characters!</p>
+                  <p class="text-red-500 text-xs absolute" *ngIf="getLoginPassword().touched && getLoginPassword().errors.pattern && !getLoginPassword().errors.minlength && getLoginPassword().value !== ''">Password is not strong enough</p>
                 </div>
               </div>
             </div>
             <button type="submit" class="px-4 py-2 bg-blue-500 text-blue-50 rounded-md button-shadow hover:brightness-95">Login</button>
-            {{loginForm.valid}}
           </form>
         </div>
       </mat-tab>
-      <mat-tab label="Register"> Content 3 </mat-tab>
+      <mat-tab label="Register">
+        <div class="py-8">
+          <form class="flex flex-col items-center justify-center space-y-6" [formGroup]="registerForm">
+            <div class="flex w-full items-center">
+              <label for="user-email" class="font-semibold w-1/3 text-right">E-Mail: &nbsp;</label>
+              <div>
+                <input type="text" id="user-email" placeholder="you@example.com" formControlName="email" class="bg-gray-50 p-2 border-b-2 focus:outline-none" [ngClass]="{ 'form-error-status' : getRegisterEmail().errors && getRegisterEmail().touched}"/>
+                <div class="relative ">
+                  <p class="text-red-500 text-xs absolute" *ngIf="getRegisterEmail().touched && getRegisterEmail().value === ''">The Email is required!</p>
+                  <p class="text-red-500 text-xs absolute" *ngIf="getRegisterEmail().touched && getRegisterEmail().invalid && getRegisterEmail().value !== ''">The Email is not Valid! {{registerForm.get('email').value}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="flex w-full items-center">
+              <div class="font-semibold w-1/3 text-right">
+                <label for="user-password">Password: &nbsp;</label>
+                <div class="mb-3"></div>
+              </div>
+              <div>
+                <input type="password" id="user-password" formControlName="password" class="bg-gray-50 p-2 border-b-2 focus:outline-none" [ngClass]="{ 'form-error-status' : getRegisterPassword().errors && getRegisterPassword().touched}"/>
+                <div class="relative mb-3" >
+                  <p class="text-red-500 text-xs absolute" *ngIf="getRegisterPassword().touched && getRegisterPassword().value === ''">The password is required!</p>
+                  <p class="text-red-500 text-xs absolute" *ngIf="getRegisterPassword().touched && getRegisterPassword().invalid && getRegisterPassword().value !== ''">The password must contain atleast 8 characters!</p>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="px-4 py-2 bg-blue-500 text-blue-50 rounded-md button-shadow hover:brightness-95">Register</button>
+          </form>
+        </div>
+      </mat-tab>
     </mat-tab-group>
   </div>
 </div>
